@@ -1,0 +1,13 @@
+.listItem  {
+  font-size: smaller;
+}
+
+#movieName{
+  color: rgb(0, 190, 0);
+  font-weight: bold;
+}
+
+#movieRelease{
+  color: rgb(0, 114, 0);
+  font-style: italic;
+}

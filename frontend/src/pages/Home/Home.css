@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+#movieList{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  row-gap: 50px;
+
+
+  list-style-type: none;
+}
