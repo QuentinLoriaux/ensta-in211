@@ -43,3 +43,11 @@ appDataSource
   .catch((err) => {
     console.error('Error during Data Source initialization:', err);
   });
+
+// Register frontend const publicPath = new URL("./public",
+// import.meta.url.pathname;
+// const publicPath = 'public';
+// app.use(express.static(publicPath));
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(publicPath, 'index.html'));
+// });
