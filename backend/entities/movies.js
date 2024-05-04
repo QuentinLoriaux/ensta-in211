@@ -5,6 +5,7 @@ const Movie = new typeorm.EntitySchema({
   columns: {
     id: {
       primary: true,
+      generated: 'uuid',
       type: String,
     },
     title: {
@@ -15,6 +16,9 @@ const Movie = new typeorm.EntitySchema({
       type: String,
     },
     backdrop_path: {
+      type: String,
+    },
+    description: {
       type: String,
     },
   },

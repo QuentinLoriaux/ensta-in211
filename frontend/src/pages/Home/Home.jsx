@@ -3,30 +3,31 @@ import axios from 'axios';
 import logo from './logo.svg';
 import './Home.css';
 import Movie from '../../components/Movie/Movie';
+import { useFetchMovies } from '../../components/MoviesTable/MoviesTable';
 
-const popularMoviesURL =
-  'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=522d421671cf75c2cba341597d86403a';
+// const popularMoviesURL =
+//   'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=522d421671cf75c2cba341597d86403a';
 
-const useFetchMovies = () => {
-  const [movies, setMovies] = useState([]);
-  useEffect(() => {
-    console.log('Chargement de la page Home');
-    axios
-      .get(popularMoviesURL)
-      .then((response) => {
-        // Do something if call succeeded
-        console.log('donnees de film chargees');
-        setMovies(response.data.results);
-      })
-      .catch((error) => {
-        // Do something if call failed
-        console.log('probleme');
-        console.log(error);
-      });
-  }, []);
+// const useFetchMovies = () => {
+//   const [movies, setMovies] = useState([]);
+//   useEffect(() => {
+//     console.log('Chargement de la page Home');
+//     axios
+//       .get(popularMoviesURL)
+//       .then((response) => {
+//         // Do something if call succeeded
+//         console.log('donnees de film chargees');
+//         setMovies(response.data.results);
+//       })
+//       .catch((error) => {
+//         // Do something if call failed
+//         console.log('probleme');
+//         console.log(error);
+//       });
+//   }, []);
 
-  return { movies };
-};
+//   return { movies };
+// };
 
 function Home() {
   const [movieName, setMovieName] = useState('');
@@ -65,7 +66,7 @@ function Home() {
         <p>{movieName}</p>
         <p>{Result}</p>
         <ul id="movieList">{listMovies}</ul>
-        <img src={logo} className="App-logo" alt="logo" />
+        {/* <img src={logo} className="App-logo" alt="logo" />
 
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -77,7 +78,7 @@ function Home() {
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
+        </a> */}
       </header>
     </div>
   );

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './MoviesTable.css';
 
-const useFetchMovies = () => {
+export const useFetchMovies = () => {
   const [movies, setMovies] = useState([]);
   const [moviesLoadingError, setMoviesLoadingError] = useState(null);
 
@@ -22,7 +22,6 @@ const useFetchMovies = () => {
 };
 
 function MoviesTable() {
-  const imgURL = 'https://image.tmdb.org/t/p/w500/';
   const { movies, moviesLoadingError } = useFetchMovies();
 
   const deleteMovie = (movieId) => {
@@ -38,6 +37,7 @@ function MoviesTable() {
             <th>title</th>
             <th>release_date</th>
             <th>cover</th>
+            <th>description</th>
           </tr>
         </thead>
         <tbody>
@@ -46,7 +46,8 @@ function MoviesTable() {
               <td>{movie.id}</td>
               <td>{movie.title}</td>
               <td>{movie.release_date}</td>
-              <td><img src={imgURL + movie.backdrop_path} alt="movie backdrop"></img></td>
+              <td><img src={movie.backdrop_path} alt="movie backdrop"></img></td>
+              <td>{movie.description}</td>
               <td>
                 <button onClick={() => deleteMovie(movie.id)}>Delete</button>
               </td>

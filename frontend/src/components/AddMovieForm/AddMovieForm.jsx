@@ -3,9 +3,9 @@ import axios from 'axios';
 import './AddMovieForm.css';
 
 const DEFAULT_FORM_VALUES = {
-  id: '',
   title: '',
   release_date: '',
+  description: '',
   backdrop_path: '',
 };
 
@@ -55,15 +55,7 @@ function AddMovieForm() {
         className="add-movie-form"
         onSubmit={(event) => saveMovie(event, formValues, setFormValues)}
       >
-        <input
-          className="add-movie-input"
-          type="id"
-          placeholder="Id"
-          value={formValues.id}
-          onChange={(event) =>
-            setFormValues({ ...formValues, id: event.target.value })
-          }
-        />
+
         <input
           className="add-movie-input"
           placeholder="Title"
@@ -80,6 +72,16 @@ function AddMovieForm() {
             setFormValues({ ...formValues, release_date: event.target.value })
           }
         />
+
+          <input
+          className="add-movie-input"
+          placeholder="Description"
+          value={formValues.description}
+          onChange={(event) =>
+            setFormValues({ ...formValues, description: event.target.value })
+          }
+        />
+
         <input
           className="add-movie-input"
           placeholder="image"
