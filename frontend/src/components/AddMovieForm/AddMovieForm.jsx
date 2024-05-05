@@ -47,7 +47,8 @@ const useSaveMovie = () => {
 
 function AddMovieForm() {
   const [formValues, setFormValues] = useState(DEFAULT_FORM_VALUES);
-  const { saveMovie, movieCreationError, movieCreationSuccess } = useSaveMovie();
+  const { saveMovie, movieCreationError, movieCreationSuccess } =
+    useSaveMovie();
 
   return (
     <div>
@@ -55,7 +56,6 @@ function AddMovieForm() {
         className="add-movie-form"
         onSubmit={(event) => saveMovie(event, formValues, setFormValues)}
       >
-
         <input
           className="add-movie-input"
           placeholder="Title"
@@ -73,7 +73,7 @@ function AddMovieForm() {
           }
         />
 
-          <input
+        <input
           className="add-movie-input"
           placeholder="Description"
           value={formValues.description}

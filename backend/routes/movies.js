@@ -4,6 +4,7 @@ import Movie from '../entities/movies.js';
 
 const router = express.Router();
 
+// ========== FETCH ALL MOVIES ==========
 //ceci est un listener qui écoute http://localhost:8080/api/movies/ et reçoit les requêtes GET de cet URL
 router.get('/', function (req, res) {
   appDataSource
@@ -16,6 +17,7 @@ router.get('/', function (req, res) {
   // res.send([]);
 });
 
+// ========== ADD A MOVIE ==========
 router.post('/new', function (req, res) {
   console.log(req.body);
 
@@ -36,6 +38,7 @@ router.post('/new', function (req, res) {
     });
 });
 
+// ========== DELETE A MOVIE ==========
 router.delete('/:movieId', function (req, res) {
   appDataSource
     .getRepository(Movie)
@@ -45,6 +48,20 @@ router.delete('/:movieId', function (req, res) {
     })
     .catch(function () {
       res.status(500).json({ message: 'Error while deleting the Movie' });
+    });
+});
+
+// ========== FETCH ONE MOVIE ==========
+router.get('/:movieId', function (req, res) {
+  appDataSource
+    .getRepository(Movie)
+    .findOne({ where: { id: req.params.movieId } })
+    .then(function (movie) {
+      // console.log(movie);
+      res.json({ movie: movie });
+    })
+    .catch(function () {
+      res.status(500).json({ message: 'Error while reading Movie data' });
     });
 });
 

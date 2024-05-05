@@ -46,7 +46,9 @@ function MoviesTable() {
               <td>{movie.id}</td>
               <td>{movie.title}</td>
               <td>{movie.release_date}</td>
-              <td><img src={movie.backdrop_path} alt="movie backdrop"></img></td>
+              <td>
+                <img src={movie.backdrop_path} alt="movie backdrop"></img>
+              </td>
               <td>{movie.description}</td>
               <td>
                 <button onClick={() => deleteMovie(movie.id)}>Delete</button>

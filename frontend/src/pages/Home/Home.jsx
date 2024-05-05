@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './Home.css';
 import Movie from '../../components/Movie/Movie';
 import { useFetchMovies } from '../../components/MoviesTable/MoviesTable';
