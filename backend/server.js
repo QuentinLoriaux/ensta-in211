@@ -26,6 +26,8 @@ appDataSource
     });
     apiRouter.use('/users', usersRouter);
     apiRouter.use('/movies', moviesRouter);
+    apiRouter.use('/likes', moviesRouter);
+    apiRouter.use('/comments', moviesRouter);
 
     // Register API router
     app.use('/api', apiRouter);

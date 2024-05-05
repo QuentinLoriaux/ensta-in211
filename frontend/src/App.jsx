@@ -8,7 +8,6 @@ import Users from './pages/Users/Users';
 import Register_Movies from './pages/Register_Movies/Register_Movies';
 import Movie_Info from './pages/Movie_Info/Movie_Info';
 
-
 function App() {
   return (
     <Root>
