@@ -2,8 +2,8 @@ import typeorm from "typeorm";
 
 const { MigrationInterface, QueryRunner } = typeorm;
 
-export default class LikeAndComment1714920623009 {
-    name = 'LikeAndComment1714920623009'
+export default class Migr1714997841994 {
+    name = 'Migr1714997841994'
 
     async up(queryRunner) {
         await queryRunner.query(`
