@@ -17,7 +17,7 @@ router.post('/login', function (req, res) {
   appDataSource
     .getRepository(User)
     .findOneBy({ 
-      email: req.body.email,
+      email: req.body.username,
       password: req.body.password,
     }).then((user) => {      
       console.log(user);
