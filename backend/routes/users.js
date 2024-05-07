@@ -6,10 +6,31 @@ const router = express.Router();
 
 router.get('/', function (req, res) {
   appDataSource
+  .getRepository(User)
+  .find({})
+  .then(function (users) {
+    res.json({ users: users });
+  });
+});
+
+router.post('/login', function (req, res) {
+  appDataSource
     .getRepository(User)
-    .find({})
-    .then(function (users) {
-      res.json({ users: users });
+    .findOneBy({ 
+      email: req.body.email,
+      password: req.body.password,
+    }).then((user) => {      
+      console.log(user);
+      if (user !== null) {
+        res.status(200).json( { cookie: user.id } );
+      } else {
+        res.status(401).json( {message: "Wrong username or password"} );
+      }
+      
+      
+      
+      
+      
     });
 });
 

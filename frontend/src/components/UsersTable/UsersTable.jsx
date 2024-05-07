@@ -36,6 +36,7 @@ function UsersTable() {
             <th>Email</th>
             <th>First name</th>
             <th>Last name</th>
+            <th>Password</th>
           </tr>
         </thead>
         <tbody>
@@ -44,6 +45,7 @@ function UsersTable() {
               <td>{user.email}</td>
               <td>{user.firstname}</td>
               <td>{user.lastname}</td>
+              <td>{user.password}</td>
               <td>
                 <button onClick={() => deleteUser(user.id)}>Delete</button>
               </td>

@@ -13,7 +13,6 @@ router.get('/', function (req, res) {
     .then(function (movies) {
       res.json({ movies: movies });
     });
-  // console.log('toto\n');
   // res.send([]);
 });
 

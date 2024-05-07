@@ -80,6 +80,14 @@ function AddUserForm() {
             setFormValues({ ...formValues, lastname: event.target.value })
           }
         />
+        <input
+          className="add-user-input"
+          placeholder="Password"
+          value={formValues.password}
+          onChange={(event) =>
+            setFormValues({ ...formValues, password: event.target.value })
+          }
+        />
         <button className="add-user-button" type="submit">
           Add user
         </button>

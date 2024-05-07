@@ -17,9 +17,12 @@
     "cors": "^2.8.5",
     "dotenv-cli": "^7.4.1",
     "express": "^4.18.3",
+    "js-cookie": "^3.0.5",
     "morgan": "^1.10.0",
     "pg": "^8.11.3",
-    "typeorm": "^0.3.20"
+    "react-cookie": "^7.1.4",
+    "typeorm": "^0.3.20",
+    "universal-cookie": "^7.1.4"
   },
   "devDependencies": {
     "eslint": "^8.57.0",
