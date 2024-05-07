@@ -37,11 +37,11 @@ const setLike = (movieId) => {
         axios.post(`${import.meta.env.VITE_BACKDEND_URL}/likes/new`, {
           movieId: movieId,
           userId: Cookies.get(`id`),
-        });
+        }).then(() => window.location.reload());
       } else {
         axios.delete(
           `${import.meta.env.VITE_BACKDEND_URL}/likes/${movieId}/${Cookies.get(`id`)}`,
-        );
+        ).then(() => window.location.reload());
       }
     })
     .catch((error) => {
