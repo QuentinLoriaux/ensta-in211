@@ -1,6 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import axios from 'axios';
-// import logo from './logo.svg';
 import './Home.css';
 import Movie from '../../components/Movie/Movie';
 import { useFetchMovies } from '../../components/MoviesTable/MoviesTable';
@@ -31,9 +29,11 @@ import { useFetchMovies } from '../../components/MoviesTable/MoviesTable';
 
 function Home() {
   const [movieName, setMovieName] = useState('');
-  const { movies } = useFetchMovies();
   const [listMovies, setListMovies] = useState([]);
   const [Result, setResult] = useState('');
+
+  const { movies } = useFetchMovies();
+
   const initialRender = useRef(true); //to prevent filter on startup, useless
 
   useEffect(() => {
@@ -59,26 +59,12 @@ function Home() {
         <label>
           Entrer un film :{' '}
           <input
-            value={movieName} // ...force the input's value to match the state variable...
+            value={movieName}
             onChange={(e) => setMovieName(e.target.value)}
           />
         </label>
-        <p>{movieName}</p>
         <p>{Result}</p>
         <ul id="movieList">{listMovies}</ul>
-        {/* <img src={logo} className="App-logo" alt="logo" />
-
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
       </header>
     </div>
   );

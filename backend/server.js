@@ -1,12 +1,14 @@
 import express from 'express';
 import logger from 'morgan';
 import cors from 'cors';
+import path from 'path';
 import usersRouter from './routes/users.js';
 import moviesRouter from './routes/movies.js';
+import likesRouter from './routes/likes.js';
+import commentsRouter from './routes/comments.js';
 import { routeNotFoundJsonHandler } from './services/routeNotFoundJsonHandler.js';
 import { jsonErrorHandler } from './services/jsonErrorHandler.js';
 import { appDataSource } from './datasource.js';
-import path from 'path';
 
 const apiRouter = express.Router();
 
@@ -29,16 +31,16 @@ appDataSource
     });
     apiRouter.use('/users', usersRouter);
     apiRouter.use('/movies', moviesRouter);
-    apiRouter.use('/likes', moviesRouter);
-    apiRouter.use('/comments', moviesRouter);
+    apiRouter.use('/likes', likesRouter);
+    apiRouter.use('/comments', commentsRouter);
 
     // Register API router
     app.use('/api', apiRouter);
 
-    const publicPath = new URL("./public", import.meta.url).pathname;
+    const publicPath = new URL('./public', import.meta.url).pathname;
     app.use(express.static(publicPath));
-    app.get("*", (req, res) => {
-      res.sendFile(path.join(publicPath, "index.html"));
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(publicPath, 'index.html'));
     });
 
     // Register 404 middleware and error handler

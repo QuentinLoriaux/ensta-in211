@@ -14,6 +14,21 @@ router.get('/', function (req, res) {
     });
 });
 
+// ========== CHECK LIKE ==========
+router.get('/:movieId/:userId', function (req, res) {
+  appDataSource
+    .getRepository(Like)
+    .count({
+      where: { movieId: req.params.movieId, userId: req.params.userId },
+    })
+    .then(function (nbLikes) {
+      res.json({ nbLikes: nbLikes });
+    })
+    .catch(function () {
+      res.status(500).json({ message: 'Error while counting likes' });
+    });
+});
+
 // ========== ADD A LIKE ==========
 router.post('/new', function (req, res) {
   console.log(req.body);
@@ -38,9 +53,7 @@ router.delete('/:movieId/:userId', function (req, res) {
   appDataSource
     .getRepository(Like)
     // .delete({ movieId: req.params.movieId  })
-    .destroy({
-      where: { movieId: req.params.movieId, userId: req.params.userId },
-    })
+    .delete({ movieId: req.params.movieId, userId: req.params.userId })
     .then(function () {
       res.status(204).json({ message: 'Like successfully deleted' });
     })
@@ -53,9 +66,9 @@ router.delete('/:movieId/:userId', function (req, res) {
 router.get('/:movieId', function (req, res) {
   appDataSource
     .getRepository(Like)
-    .count({ where: { id: req.params.movieId } })
+    .count({ where: { movieId: req.params.movieId } })
     .then(function (nbLikes) {
-      res.json({ nbLikes: nbLikes });
+      res.status(200).json({ nbLikes: nbLikes });
     })
     .catch(function () {
       res.status(500).json({ message: 'Error while counting likes' });
