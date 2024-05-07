@@ -9,11 +9,9 @@ const useGetLikes = (movieId) => {
 
   if (movieId !== null) {
     useEffect(() => {
-      console.log(`${import.meta.env.VITE_BACKDEND_URL}/likes/${movieId}`);
       axios
         .get(`${import.meta.env.VITE_BACKDEND_URL}/likes/${movieId}`)
         .then((response) => {
-          console.log(response.data.nbLikes);
           setNumbLikes(response.data.nbLikes);
         })
         .catch((error) => {

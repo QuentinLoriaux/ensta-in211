@@ -50,10 +50,14 @@ router.delete('/:commentId', function (req, res) {
 });
 
 // ========== FETCH COMMENTS OF A MOVIE ==========
-router.get('/:movieId', function (req, res) {
+router.get('/fetch/:movieId', function (req, res) {
+  console.log(req.params.movieId);
+  console.log(req.params);
+  const ID = JSON.stringify(req.params.movieId);
+  console.log(ID);
   appDataSource
     .getRepository(Comment)
-    .find({ where: { movieId: req.params.movieId } })
+    .find({ where: { movieId: ID } })
     .then(function (comments) {
       res.json({ comments: comments });
     })
@@ -68,7 +72,7 @@ router.get('/:movieId', function (req, res) {
 router.get('/:userId', function (req, res) {
   appDataSource
     .getRepository(Comment)
-    .find({ where: { userId: req.params.userId } })
+    .find({ userId: req.params.userId })
     .then(function (comments) {
       res.json({ comments: comments });
     })

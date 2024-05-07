@@ -6,31 +6,27 @@ const router = express.Router();
 
 router.get('/', function (req, res) {
   appDataSource
-  .getRepository(User)
-  .find({})
-  .then(function (users) {
-    res.json({ users: users });
-  });
+    .getRepository(User)
+    .find({})
+    .then(function (users) {
+      res.json({ users: users });
+    });
 });
 
 router.post('/login', function (req, res) {
   appDataSource
     .getRepository(User)
-    .findOneBy({ 
+    .findOneBy({
       email: req.body.username,
       password: req.body.password,
-    }).then((user) => {      
+    })
+    .then((user) => {
       console.log(user);
       if (user !== null) {
-        res.status(200).json( { cookie: user.id } );
+        res.status(200).json({ cookie: user.id });
       } else {
-        res.status(401).json( {message: "Wrong username or password"} );
+        res.status(401).json({ message: 'Wrong username or password' });
       }
-      
-      
-      
-      
-      
     });
 });
 
