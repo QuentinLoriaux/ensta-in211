@@ -27,11 +27,23 @@ import { useFetchMovies } from '../../components/MoviesTable/MoviesTable';
 //   return { movies };
 // };
 
+function sortAlpha(movies) {
+  movies.sort((a, b) => a.title.localeCompare(b.title));
+
+  return;
+}
+
+function sortDefault(movies){
+
+  return;
+}
+
 function Home() {
   const [movieName, setMovieName] = useState('');
   const [listMovies, setListMovies] = useState([]);
   const [Result, setResult] = useState('');
-
+  const [sort, setSort] = useState(() => sortDefault);
+  const [sortCheck, setSortCheck] = useState(true);
   const { movies } = useFetchMovies();
 
   const initialRender = useRef(true); //to prevent filter on startup, useless
@@ -43,6 +55,7 @@ function Home() {
       const filteredMovies = movies.filter((movie) =>
         movie.title.toLowerCase().includes(movieName.toLowerCase()),
       );
+      sort(filteredMovies);
       setListMovies(filteredMovies.map((elt) => <Movie movie={elt} />));
       if (filteredMovies.length === 0) {
         setResult("Aucun résultat n'a été trouvé.");
@@ -50,12 +63,19 @@ function Home() {
         setResult(filteredMovies.length.toString() + ' résultats');
       }
     }
-  }, [movieName, movies]);
+  }, [movieName, movies, sortCheck]);
 
   return (
     <div className="App">
       <header className="App-header">
         <p>Film Mania</p>
+        <button
+          onClick={() => {
+            setSort(() => sortAlpha); setSortCheck(!sortCheck);
+          }}
+        >
+          ordre alphabétique
+        </button>
         <label>
           Entrer un film :{' '}
           <input
